@@ -167,7 +167,7 @@ EMAIL_USE_TLS = env_bool('EMAIL_USE_TLS', True)
 EMAIL_USE_SSL = env_bool('EMAIL_USE_SSL', False)
 DEFAULT_FROM_EMAIL = os.getenv(
     'DEFAULT_FROM_EMAIL',
-    'St. Anthony Health Centre <info@stanthonyhcabossi.org>',
+    '"St. Anthony Health Centre" <info@stanthonyhcabossi.org>',
 )
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 CONTACT_NOTIFY_EMAIL = os.getenv('CONTACT_NOTIFY_EMAIL', 'info@stanthonyhcabossi.org')
