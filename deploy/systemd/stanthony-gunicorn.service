@@ -1,0 +1,28 @@
+[Unit]
+Description=St. Anthony Health Centre Gunicorn (Django) — shared VPS with Soma Smart
+After=network.target postgresql.service
+Wants=postgresql.service
+
+[Service]
+Type=simple
+User=stanthony
+Group=www-data
+WorkingDirectory=/srv/stanthony
+EnvironmentFile=/srv/stanthony/.env
+
+RuntimeDirectory=stanthony
+RuntimeDirectoryMode=0755
+
+ExecStart=/srv/stanthony/.venv/bin/gunicorn \
+    --config /srv/stanthony/deploy/gunicorn.conf.py \
+    config.wsgi:application
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=30
+Restart=always
+RestartSec=5
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

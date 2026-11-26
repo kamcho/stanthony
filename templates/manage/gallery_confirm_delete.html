@@ -1,0 +1,24 @@
+{% extends 'manage/base_manage.html' %}
+
+{% block title %}Delete gallery image — Manage{% endblock %}
+
+{% block manage_content %}
+<header class="manage-header">
+    <div>
+        <h1 class="manage-title">Delete gallery image</h1>
+        <p class="manage-subtitle">This permanently removes the image from the website.</p>
+    </div>
+</header>
+
+<div class="manage-confirm">
+    {% if image.image %}
+    <img class="manage-preview-img" src="{{ image.image.url }}" alt="{{ image.title }}">
+    {% endif %}
+    <p>Delete <strong>{{ image.title }}</strong>?</p>
+    <form method="post" class="manage-confirm-actions">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete permanently</button>
+        <a href="{% url 'manage_gallery_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ career.title }} — Careers — St. Anthony's Health Centre Abossi{% endblock %}
+
+{% block content %}
+{% include 'includes/site_header.html' %}
+
+<section class="page-hero page-hero--compact">
+    <div class="container page-hero-inner">
+        <a href="{% url 'careers' %}" class="page-back-link">&larr; Back to Careers</a>
+        <div class="career-detail-tags">
+            <span class="career-tag">{{ career.get_department_display }}</span>
+            <span class="career-tag career-tag--muted">{{ career.get_employment_type_display }}</span>
+        </div>
+        <h1 class="page-hero-title">{{ career.title }}</h1>
+        <div class="career-detail-meta">
+            <span>{{ career.location }}</span>
+            <span>Posted {{ career.posted_at|date:"M j, Y" }}</span>
+            {% if career.closing_date %}
+            <span>Apply by {{ career.closing_date|date:"M j, Y" }}</span>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<section class="section career-detail">
+    <div class="container career-detail-inner">
+        <div class="career-detail-content">
+            <section class="career-detail-block">
+                <h2>About the Role</h2>
+                <div class="career-detail-text">{{ career.description|linebreaks }}</div>
+            </section>
+
+            <section class="career-detail-block">
+                <h2>Key Responsibilities</h2>
+                <ul class="career-detail-list">
+                    {% for item in career.responsibilities_list %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+
+            <section class="career-detail-block">
+                <h2>Requirements</h2>
+                <ul class="career-detail-list">
+                    {% for item in career.requirements_list %}
+                    <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </div>
+
+        <aside class="career-detail-sidebar">
+            <div class="career-apply-card">
+                <h3>Apply for this Role</h3>
+                <p>
+                    Send your CV and cover letter to our careers team. Include the job title
+                    in your email subject line.
+                </p>
+                <a href="mailto:{{ career.apply_email }}?subject=Application: {{ career.title|urlencode }}" class="btn btn-primary btn-full">
+                    Apply via Email
+                </a>
+                <p class="career-apply-email">{{ career.apply_email }}</p>
+            </div>
+        </aside>
+    </div>
+</section>
+
+{% include 'includes/site_footer.html' %}
+{% endblock %}

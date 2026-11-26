@@ -1,0 +1,25 @@
+{% load static %}
+{% for item in items %}
+<button
+    type="button"
+    class="gallery-item{% if item.is_featured and compact %} gallery-item--featured{% endif %}"
+    data-category="{{ item.category }}"
+    data-title="{{ item.title }}"
+    data-caption="{{ item.caption }}"
+    data-image="{{ item.image.url }}"
+    aria-label="View {{ item.title }}"
+>
+    <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
+    <span class="gallery-item-overlay">
+        <span class="gallery-item-category">{{ item.get_category_display }}</span>
+        <span class="gallery-item-title">{{ item.title }}</span>
+        {% if item.caption %}
+        <span class="gallery-item-caption">{{ item.caption }}</span>
+        {% endif %}
+    </span>
+</button>
+{% empty %}
+<div class="gallery-empty">
+    <p>Gallery photos coming soon. Upload images via the admin panel.</p>
+</div>
+{% endfor %}

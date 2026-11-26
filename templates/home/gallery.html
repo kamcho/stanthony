@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Gallery — St. Anthony's Health Centre Abossi{% endblock %}
+
+{% block content %}
+{% include 'includes/site_header.html' %}
+
+<section class="page-hero page-hero--gallery">
+    <div class="container page-hero-inner">
+        <span class="section-badge">Gallery</span>
+        <h1 class="page-hero-title">Life at St. Anthony's Health Centre</h1>
+        <p class="page-hero-text">
+            Facilities, staff and services at St. Anthony's Health Centre Abossi—
+            Trans Mara East, Narok County.
+        </p>
+    </div>
+</section>
+
+<section class="section gallery-page">
+    <div class="container">
+        <div class="gallery-filters" role="tablist" aria-label="Filter gallery by category">
+            <button type="button" class="gallery-filter is-active" data-filter="all">All</button>
+            {% for value, label in categories %}
+            <button type="button" class="gallery-filter" data-filter="{{ value }}">{{ label }}</button>
+            {% endfor %}
+        </div>
+
+        <div class="gallery-grid gallery-grid--full" id="galleryGrid">
+            {% include 'includes/gallery_items.html' with items=images %}
+        </div>
+    </div>
+</section>
+
+{% include 'includes/gallery_lightbox.html' %}
+{% include 'includes/site_footer.html' %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/gallery.js' %}"></script>
+{% endblock %}

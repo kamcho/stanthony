@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'includes/site_header.html' %}
+
+<section class="section manage-section">
+    <div class="container">
+        <div class="manage-layout">
+            <aside class="manage-sidebar">
+                <p class="manage-sidebar-label">Staff desk</p>
+                <nav class="manage-nav" aria-label="Manage navigation">
+                    <a href="{% url 'manage_dashboard' %}" class="manage-nav-link{% if request.resolver_match.url_name == 'manage_dashboard' %} is-active{% endif %}">Dashboard</a>
+                    <a href="{% url 'manage_gallery_list' %}" class="manage-nav-link{% if 'gallery' in request.resolver_match.url_name %} is-active{% endif %}">Gallery uploads</a>
+                    <a href="{% url 'manage_files_list' %}" class="manage-nav-link{% if 'files' in request.resolver_match.url_name %} is-active{% endif %}">File uploads</a>
+                    <a href="{% url 'manage_careers_list' %}" class="manage-nav-link{% if 'careers' in request.resolver_match.url_name %} is-active{% endif %}">Careers</a>
+                </nav>
+                <form method="post" action="{% url 'logout' %}" class="manage-logout">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-secondary btn-full">Sign out</button>
+                </form>
+            </aside>
+
+            <div class="manage-main">
+                {% if messages %}
+                <div class="manage-messages">
+                    {% for message in messages %}
+                    <div class="form-alert form-alert--{{ message.tags|default:'success' }}" role="status">{{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                {% block manage_content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% include 'includes/site_footer.html' %}
+{% endblock %}

@@ -1,0 +1,71 @@
+<section class="section maps-section" id="location" aria-labelledby="maps-heading">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-badge">Find Us</span>
+            <h2 class="section-title" id="maps-heading">Visit St. Anthony's Health Centre</h2>
+            <p class="section-subtitle">
+                Located on Abossi – Ndanai Road, Trans Mara East Sub-county, Narok County.
+                Use the map below for directions or call us if you need assistance.
+            </p>
+        </header>
+
+        <div class="maps-layout">
+            <div class="maps-frame-wrap">
+                {% if google_maps_embed_url %}
+                <iframe
+                    class="maps-frame"
+                    src="{{ google_maps_embed_url }}"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Map showing St. Anthony's Health Centre Abossi location"
+                ></iframe>
+                {% else %}
+                <div class="maps-placeholder">
+                    <p>Map embed will appear here once your Google Maps link is added in settings.</p>
+                    <p class="maps-placeholder-hint">Use the embed URL from Google Maps → Share → Embed a map.</p>
+                </div>
+                {% endif %}
+            </div>
+
+            <aside class="maps-info">
+                <h3 class="maps-info-title">Location &amp; Hours</h3>
+                <ul class="maps-info-list">
+                    <li>
+                        <strong>Address</strong>
+                        <span>St. Anthony's Health Centre Abossi</span>
+                        <span>Abossi – Ndanai Road</span>
+                        <span>Trans Mara East, Narok County</span>
+                        <span>P.O. Box 173-20404, Ndanai</span>
+                    </li>
+                    <li>
+                        <strong>Phone</strong>
+                        <span><a href="tel:0739983657">0739 983 657</a></span>
+                    </li>
+                    <li>
+                        <strong>Email</strong>
+                        <span><a href="mailto:St.anthonysabossi.hc@gmail.com">St.anthonysabossi.hc@gmail.com</a></span>
+                    </li>
+                    <li>
+                        <strong>Hours</strong>
+                        <span>Open 24 hours, 7 days a week</span>
+                    </li>
+                    <li>
+                        <strong>Registration</strong>
+                        <span>KMPDC Reg. No. 001821</span>
+                    </li>
+                </ul>
+                {% if google_maps_link_url %}
+                <a
+                    href="{{ google_maps_link_url }}"
+                    class="btn btn-primary maps-directions-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Get Directions
+                </a>
+                {% endif %}
+            </aside>
+        </div>
+    </div>
+</section>

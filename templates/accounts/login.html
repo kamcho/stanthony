@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Staff login — St. Anthony's Health Centre Abossi{% endblock %}
+
+{% block content %}
+{% include 'includes/site_header.html' %}
+
+<section class="section auth-section">
+    <div class="container auth-wrap">
+        <div class="auth-card">
+            <p class="section-badge">Staff access</p>
+            <h1 class="auth-title">Sign in</h1>
+            <p class="auth-text">Manage gallery images and file uploads for the health centre website.</p>
+
+            {% if form.non_field_errors %}
+            <div class="form-alert form-alert--error" role="alert">
+                {{ form.non_field_errors|striptags }}
+            </div>
+            {% endif %}
+
+            <form method="post" class="manage-form" novalidate>
+                {% csrf_token %}
+                <label class="field">
+                    <span class="field-label">Username</span>
+                    {{ form.username }}
+                    {% if form.username.errors %}
+                    <span class="field-error">{{ form.username.errors|striptags }}</span>
+                    {% endif %}
+                </label>
+                <label class="field">
+                    <span class="field-label">Password</span>
+                    {{ form.password }}
+                    {% if form.password.errors %}
+                    <span class="field-error">{{ form.password.errors|striptags }}</span>
+                    {% endif %}
+                </label>
+                <button type="submit" class="btn btn-primary btn-full">Sign in</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% include 'includes/site_footer.html' %}
+{% endblock %}

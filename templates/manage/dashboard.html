@@ -1,0 +1,105 @@
+{% extends 'manage/base_manage.html' %}
+
+{% block title %}Manage — St. Anthony's Health Centre Abossi{% endblock %}
+
+{% block manage_content %}
+<header class="manage-header">
+    <div>
+        <h1 class="manage-title">Welcome, {{ user.get_username }}</h1>
+        <p class="manage-subtitle">Manage gallery images, files, and career postings for the website.</p>
+    </div>
+</header>
+
+<div class="manage-stats">
+    <article class="manage-stat">
+        <span class="manage-stat-value">{{ gallery_active }}</span>
+        <span class="manage-stat-label">Active gallery images</span>
+        <span class="manage-stat-meta">{{ gallery_count }} total</span>
+    </article>
+    <article class="manage-stat">
+        <span class="manage-stat-value">{{ file_active }}</span>
+        <span class="manage-stat-label">Active files</span>
+        <span class="manage-stat-meta">{{ file_count }} total</span>
+    </article>
+    <article class="manage-stat">
+        <span class="manage-stat-value">{{ career_active }}</span>
+        <span class="manage-stat-label">Open careers</span>
+        <span class="manage-stat-meta">{{ career_count }} total</span>
+    </article>
+</div>
+
+<div class="manage-actions">
+    <a href="{% url 'manage_gallery_upload' %}" class="btn btn-primary">Upload gallery image</a>
+    <a href="{% url 'manage_files_upload' %}" class="btn btn-secondary">Upload file</a>
+    <a href="{% url 'manage_careers_create' %}" class="btn btn-secondary">Add career</a>
+</div>
+
+<div class="manage-columns manage-columns--3">
+    <section class="manage-panel">
+        <div class="manage-panel-head">
+            <h2>Recent gallery</h2>
+            <a href="{% url 'manage_gallery_list' %}">View all</a>
+        </div>
+        {% if recent_gallery %}
+        <ul class="manage-mini-list">
+            {% for image in recent_gallery %}
+            <li>
+                <img src="{{ image.image.url }}" alt="" width="48" height="48">
+                <div>
+                    <strong>{{ image.title }}</strong>
+                    <span>{{ image.get_category_display }}</span>
+                </div>
+                <a href="{% url 'manage_gallery_edit' image.pk %}">Edit</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="manage-empty">No gallery images yet.</p>
+        {% endif %}
+    </section>
+
+    <section class="manage-panel">
+        <div class="manage-panel-head">
+            <h2>Recent files</h2>
+            <a href="{% url 'manage_files_list' %}">View all</a>
+        </div>
+        {% if recent_files %}
+        <ul class="manage-mini-list manage-mini-list--files">
+            {% for item in recent_files %}
+            <li>
+                <div>
+                    <strong>{{ item.title }}</strong>
+                    <span>{{ item.get_kind_display }} · {{ item.filename }}</span>
+                </div>
+                <a href="{% url 'manage_files_edit' item.pk %}">Edit</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="manage-empty">No files uploaded yet.</p>
+        {% endif %}
+    </section>
+
+    <section class="manage-panel">
+        <div class="manage-panel-head">
+            <h2>Recent careers</h2>
+            <a href="{% url 'manage_careers_list' %}">View all</a>
+        </div>
+        {% if recent_careers %}
+        <ul class="manage-mini-list manage-mini-list--files">
+            {% for career in recent_careers %}
+            <li>
+                <div>
+                    <strong>{{ career.title }}</strong>
+                    <span>{{ career.get_department_display }} · {% if career.is_active %}Open{% else %}Closed{% endif %}</span>
+                </div>
+                <a href="{% url 'manage_careers_edit' career.pk %}">Edit</a>
+            </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="manage-empty">No career postings yet.</p>
+        {% endif %}
+    </section>
+</div>
+{% endblock %}

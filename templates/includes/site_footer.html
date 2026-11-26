@@ -1,0 +1,63 @@
+{% load static %}
+{% include 'includes/site_maps.html' %}
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <a href="{% url 'index' %}" class="nav-brand footer-nav-brand">
+                <img
+                    class="brand-logo brand-logo--footer"
+                    src="{% static 'img/logo.png' %}"
+                    alt="Saint Anthony's Health Centre Abossi"
+                    width="399"
+                    height="139"
+                >
+            </a>
+            <p class="footer-tagline">
+                Faith-based healthcare transforming lives in Abossi, Trans Mara East, Narok County.
+            </p>
+        </div>
+
+        <div class="footer-links">
+            <h4 class="footer-heading">Quick Links</h4>
+            <ul>
+                <li><a href="{% url 'index' %}#services">Our Services</a></li>
+                <li><a href="{% url 'about' %}">About Us</a></li>
+                <li><a href="{% url 'gallery' %}">Gallery</a></li>
+                <li><a href="{% url 'index' %}#testimonials">Testimonials</a></li>
+                <li><a href="{% url 'careers' %}">Careers</a></li>
+                <li><a href="{% url 'index' %}#book">Book Appointment</a></li>
+                <li><a href="{% url 'index' %}#location">Find Us</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-links">
+            <h4 class="footer-heading">Services</h4>
+            <ul>
+                <li><a href="{% url 'index' %}#services">Out-patient &amp; In-patient</a></li>
+                <li><a href="{% url 'index' %}#services">Maternity &amp; MCH</a></li>
+                <li><a href="{% url 'index' %}#services">Laboratory</a></li>
+                <li><a href="{% url 'index' %}#services">X-ray &amp; Ultra-sound</a></li>
+                <li><a href="{% url 'index' %}#services">CCC / PMTCT / HTS</a></li>
+                <li><a href="{% url 'index' %}#services">Referral Services</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-contact">
+            <h4 class="footer-heading">Contact</h4>
+            <ul>
+                <li>Abossi – Ndanai Road, Trans Mara East, Narok County</li>
+                <li>P.O. Box 173-20404, Ndanai</li>
+                <li><a href="tel:0739983657">0739 983 657</a></li>
+                <li><a href="mailto:St.anthonysabossi.hc@gmail.com">St.anthonysabossi.hc@gmail.com</a></li>
+                <li>Open 24/7</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container footer-bottom-inner">
+            <p>&copy; {% now "Y" %} St. Anthony's Health Centre Abossi. All rights reserved. KMPDC Reg. No. 001821</p>
+            <p class="footer-emergency">Open <strong>24/7</strong></p>
+        </div>
+    </div>
+</footer>

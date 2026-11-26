@@ -1,0 +1,492 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+{% include 'includes/site_header.html' %}
+
+<div class="hero-rotator" id="heroRotator" data-interval="5000" aria-label="Featured highlights">
+    <div class="hero-slide is-active" data-hero="3" aria-hidden="false">
+        {% include 'includes/hero_v3.html' %}
+    </div>
+    <div class="hero-slide" data-hero="1" aria-hidden="true">
+        {% include 'includes/hero_v1.html' %}
+    </div>
+</div>
+
+<section class="section services" id="services">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-badge">What We Offer</span>
+            <h2 class="section-title">Our Medical Services</h2>
+            <p class="section-subtitle">
+                A faith-based facility offering out-patient, in-patient, maternity, laboratory,
+                X-ray, ultra-sound, MCH, PMTCT, PITC/HTS, CCC and referral services.
+            </p>
+        </header>
+
+        <div class="services-grid">
+            <article class="service-card">
+                <div class="service-card-icon service-card-icon--teal">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 8v8M8 12h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/>
+                    </svg>
+                </div>
+                <h3 class="service-card-title">Out-patient Services</h3>
+                <p class="service-card-text">Day care without overnight admission.</p>
+                <ul class="service-checks">
+                    <li>General consultations</li>
+                    <li>Minor procedures &amp; dressings</li>
+                    <li>Chronic illness follow-up</li>
+                    <li>Prescription &amp; pharmacy support</li>
+                </ul>
+            </article>
+
+            <article class="service-card">
+                <div class="service-card-icon service-card-icon--blue">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 19h16M6 19V8a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v11" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                        <path d="M10 11h4M12 9v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="service-card-title">In-patient Care</h3>
+                <p class="service-card-text">Admission with continuous nursing care.</p>
+                <ul class="service-checks">
+                    <li>Ward admission &amp; observation</li>
+                    <li>24/7 nursing support</li>
+                    <li>Treatment &amp; monitoring</li>
+                    <li>Discharge &amp; aftercare guidance</li>
+                </ul>
+            </article>
+
+            <article class="service-card">
+                <div class="service-card-icon service-card-icon--green">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 3c-1.5 2.5-4 4.5-4 8a4 4 0 0 0 8 0c0-3.5-2.5-5.5-4-8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                        <path d="M12 14v4M9 20h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="service-card-title">Maternity &amp; MCH</h3>
+                <p class="service-card-text">Care for mothers, newborns and children.</p>
+                <ul class="service-checks">
+                    <li>Antenatal care (ANC)</li>
+                    <li>Delivery &amp; postnatal care</li>
+                    <li>Immunisation &amp; growth monitoring</li>
+                    <li>Family planning support</li>
+                </ul>
+            </article>
+
+            <article class="service-card">
+                <div class="service-card-icon service-card-icon--blue">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M6 4h12v16H6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                        <path d="M9 8h6M9 12h6M9 16h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="service-card-title">Laboratory Investigations</h3>
+                <p class="service-card-text">Basic tests plus biochemistry.</p>
+                <ul class="service-checks">
+                    <li>Kidney function tests</li>
+                    <li>Liver function tests</li>
+                    <li>Cholesterol, sodium &amp; potassium</li>
+                    <li>Routine blood &amp; urine tests</li>
+                </ul>
+            </article>
+
+            <article class="service-card">
+                <div class="service-card-icon service-card-icon--teal">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <rect x="3" y="6" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M7 10h4M7 14h6M15 11v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="service-card-title">X-ray &amp; Ultra-sound</h3>
+                <p class="service-card-text">Diagnostic imaging for clinical decisions.</p>
+                <ul class="service-checks">
+                    <li>Chest &amp; limb X-ray</li>
+                    <li>Pelvic X-ray</li>
+                    <li>Obstetric ultra-sound (US)</li>
+                    <li>Abdominal &amp; pelvic US</li>
+                </ul>
+            </article>
+
+            <article class="service-card">
+                <div class="service-card-icon service-card-icon--green">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 class="service-card-title">CCC for HIV/AIDS</h3>
+                <p class="service-card-text">Comprehensive care with continuity and dignity.</p>
+                <ul class="service-checks">
+                    <li>HIV clinical follow-up</li>
+                    <li>ART adherence support</li>
+                    <li>CD4 / viral load linkage</li>
+                    <li>Counselling &amp; psychosocial care</li>
+                </ul>
+            </article>
+
+            <article class="service-card">
+                <div class="service-card-icon service-card-icon--blue">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 2l2.5 5 5.5.8-4 3.9.9 5.5L12 15l-4.9 2.6.9-5.5-4-3.9 5.5-.8L12 2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 class="service-card-title">PMTCT &amp; PITC/HTS</h3>
+                <p class="service-card-text">HIV prevention and testing services.</p>
+                <ul class="service-checks">
+                    <li>PMTCT for expectant mothers</li>
+                    <li>Provider-initiated testing (PITC)</li>
+                    <li>HIV testing services (HTS)</li>
+                    <li>Partner &amp; family testing support</li>
+                </ul>
+            </article>
+
+            <article class="service-card">
+                <div class="service-card-icon service-card-icon--teal">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M4 19h16M6 19V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v10" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                        <path d="M9 11h6M12 8v6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="service-card-title">Referral &amp; Morgue</h3>
+                <p class="service-card-text">Support beyond primary facility care.</p>
+                <ul class="service-checks">
+                    <li>Specialist referral coordination</li>
+                    <li>Ambulance / transfer support</li>
+                    <li>Morgue services</li>
+                    <li>Family guidance &amp; documentation</li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section about" id="about">
+    <div class="container about-inner">
+        <div class="about-content">
+            <span class="section-badge">Who We Are</span>
+            <h2 class="section-title about-title">Serving Abossi<br>Since 1983</h2>
+            <p class="about-text">
+                St. Anthony's Health Centre Abossi is a faith-based organisation offering
+                out-patient, in-patient, maternity, laboratory investigations (including biochemistry),
+                X-ray, ultra-sound, maternal and child health, PMTCT, PITC/HTS, CCC for persons
+                living with HIV/AIDS, and referral services.
+            </p>
+            <p class="about-text">
+                Established in 1983 at Abossi Village and managed by the Little Sisters of St. Joseph
+                under the Catholic Diocese of Ngong, our 29 medical and support staff serve
+                Trans Mara East, Narok County—open 24/7.
+            </p>
+
+            <ul class="about-features">
+                <li class="about-feature">
+                    <span class="about-feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <div>
+                        <strong>29 Dedicated Staff</strong>
+                        <span>Medical and support professionals serving the community</span>
+                    </div>
+                </li>
+                <li class="about-feature">
+                    <span class="about-feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <div>
+                        <strong>Faith-Based Stewardship</strong>
+                        <span>Catholic Diocese of Ngong · Little Sisters of St. Joseph</span>
+                    </div>
+                </li>
+                <li class="about-feature">
+                    <span class="about-feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <div>
+                        <strong>Accessible by All</strong>
+                        <span>Quality, safe and affordable healthcare for every family</span>
+                    </div>
+                </li>
+            </ul>
+
+            <a href="{% url 'about' %}" class="btn btn-secondary about-learn-more">Learn More About Us</a>
+        </div>
+
+        <div class="about-visual">
+            <div class="about-card about-card--mission">
+                <div class="about-card-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 class="about-card-title">Our Mission</h3>
+                <p class="about-card-text">
+                    Transforming lives through evangelization, pastoral care and health-care
+                    service provision that is affordable, reliable and accessible by all.
+                </p>
+            </div>
+
+            <div class="about-card about-card--vision">
+                <div class="about-card-icon about-card-icon--blue" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+                        <path d="M12 3c2 3 3 5.5 3 9s-1 6-3 9M12 3c-2 3-3 5.5-3 9s1 6 3 9M3 12h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 class="about-card-title">Our Vision</h3>
+                <p class="about-card-text">
+                    Provision of quality, safe, and affordable health care services accessible by all.
+                </p>
+            </div>
+
+            <div class="about-highlight">
+                <span class="about-highlight-value">1983</span>
+                <span class="about-highlight-label">Year Established in Abossi</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section partners-strip" id="partners">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-badge">Partners</span>
+            <h2 class="section-title">Our Collaborating Partners</h2>
+            <p class="section-subtitle">
+                Working together for better health outcomes in Trans Mara East and beyond.
+            </p>
+        </header>
+        <ul class="about-partners-list">
+            <li>Ministry of Health</li>
+            <li>Narok County Government — Department of Health</li>
+            <li>Trans Mara East Sub-county</li>
+            <li>Lifenet International</li>
+            <li>The Community</li>
+        </ul>
+    </div>
+</section>
+
+<section class="section gallery-preview" id="gallery">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-badge">Gallery</span>
+            <h2 class="section-title">Inside St. Anthony's Health Centre</h2>
+            <p class="section-subtitle">
+                A look at care, facilities and community life at St. Anthony's Health Centre Abossi,
+                Trans Mara East, Narok County.
+            </p>
+        </header>
+
+        <div class="gallery-grid gallery-grid--landing" id="galleryGrid">
+            {% include 'includes/gallery_items.html' with items=featured_gallery %}
+        </div>
+
+        <div class="gallery-preview-cta">
+            <a href="{% url 'gallery' %}" class="btn btn-primary">View Full Gallery</a>
+        </div>
+    </div>
+</section>
+
+<section class="section testimonials" id="testimonials">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-badge">Patient Stories</span>
+            <h2 class="section-title">What Our Patients Say</h2>
+            <p class="section-subtitle">
+                Families across Abossi and Trans Mara East trust St. Anthony's for quality,
+                safe and affordable care—day and night.
+            </p>
+        </header>
+
+        <div class="testimonials-grid">
+            <blockquote class="testimonial-card">
+                <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                </div>
+                <p class="testimonial-quote">
+                    "When my father needed kidney function tests, the laboratory here was thorough
+                    and the staff explained every result. We did not have to travel far from Abossi."
+                </p>
+                <footer class="testimonial-author">
+                    <span class="testimonial-avatar" aria-hidden="true">JN</span>
+                    <div>
+                        <cite class="testimonial-name">Jane Naisiae</cite>
+                        <span class="testimonial-role">Patient's Daughter · Abossi</span>
+                    </div>
+                </footer>
+            </blockquote>
+
+            <blockquote class="testimonial-card testimonial-card--featured">
+                <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                </div>
+                <p class="testimonial-quote">
+                    "I delivered my baby here and received ultrasound and maternal care throughout.
+                    The sisters and clinical team treated me with dignity. St. Anthony's is a blessing
+                    to Trans Mara East."
+                </p>
+                <footer class="testimonial-author">
+                    <span class="testimonial-avatar testimonial-avatar--blue" aria-hidden="true">MC</span>
+                    <div>
+                        <cite class="testimonial-name">Mary Chepkirui</cite>
+                        <span class="testimonial-role">New Mother · Trans Mara East</span>
+                    </div>
+                </footer>
+            </blockquote>
+
+            <blockquote class="testimonial-card">
+                <div class="testimonial-stars" aria-label="5 out of 5 stars">
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                    <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10 1.5l2.5 5.1 5.6.8-4 3.9.9 5.5L10 14.3l-5 2.5.9-5.5-4-3.9 5.6-.8L10 1.5Z"/></svg>
+                </div>
+                <p class="testimonial-quote">
+                    "The Comprehensive Care Clinic has walked with me on my HIV treatment journey.
+                    Care is affordable, respectful, and always available—even at night."
+                </p>
+                <footer class="testimonial-author">
+                    <span class="testimonial-avatar testimonial-avatar--green" aria-hidden="true">DK</span>
+                    <div>
+                        <cite class="testimonial-name">Daniel Kiprono</cite>
+                        <span class="testimonial-role">CCC Client · Narok County</span>
+                    </div>
+                </footer>
+            </blockquote>
+        </div>
+    </div>
+</section>
+
+<section class="section contact" id="book">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-badge">Get In Touch</span>
+            <h2 class="section-title">Book an Appointment</h2>
+            <p class="section-subtitle">
+                Schedule a visit or reach out to us—we're here to help you
+                get the care you need.
+            </p>
+        </header>
+
+        <div class="contact-inner">
+            <div class="contact-info">
+                <h3 class="contact-info-title">Contact Information</h3>
+                <p class="contact-info-text">
+                    Visit us on Abossi – Ndanai Road or call 0739 983 657. We are open 24/7;
+                    walk-ins are welcome.
+                </p>
+
+                <ul class="contact-details">
+                    <li class="contact-detail">
+                        <span class="contact-detail-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-6-5.2-6-10a6 6 0 1 1 12 0c0 4.8-6 10-6 10Z" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="11" r="2" stroke="currentColor" stroke-width="1.5"/></svg>
+                        </span>
+                        <div>
+                            <strong>Location</strong>
+                            <span>Abossi – Ndanai Road</span>
+                            <span>Trans Mara East, Narok County</span>
+                            <span>P.O. Box 173-20404, Ndanai</span>
+                        </div>
+                    </li>
+                    <li class="contact-detail">
+                        <span class="contact-detail-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><path d="M5 4h4l2 5-2 1.5a11 11 0 0 0 5 5L15.5 13l5 2v4a2 2 0 0 1-2 2C9.6 21 3 14.4 3 6a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                        </span>
+                        <div>
+                            <strong>Phone</strong>
+                            <span><a href="tel:0739983657">0739 983 657</a></span>
+                        </div>
+                    </li>
+                    <li class="contact-detail">
+                        <span class="contact-detail-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        </span>
+                        <div>
+                            <strong>Email</strong>
+                            <span><a href="mailto:St.anthonysabossi.hc@gmail.com">St.anthonysabossi.hc@gmail.com</a></span>
+                        </div>
+                    </li>
+                    <li class="contact-detail">
+                        <span class="contact-detail-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                        </span>
+                        <div>
+                            <strong>Opening Hours</strong>
+                            <span>Open 24 hours, 7 days a week</span>
+                            <span>KMPDC Reg. No. 001821</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <form class="contact-form" action="#" method="post">
+                <p class="contact-form-intro">Tell us how we can help—we'll confirm your visit by phone.</p>
+
+                <div class="form-row">
+                    <label class="field">
+                        <span class="field-label">Full name</span>
+                        <input type="text" name="full_name" placeholder="Your full name" autocomplete="name" required>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Phone</span>
+                        <input type="tel" name="phone" placeholder="07XX XXX XXX" autocomplete="tel" required>
+                    </label>
+                </div>
+
+                <label class="field">
+                    <span class="field-label">Email <em>(optional)</em></span>
+                    <input type="email" name="email" placeholder="you@example.com" autocomplete="email">
+                </label>
+
+                <div class="form-row">
+                    <label class="field">
+                        <span class="field-label">Service needed</span>
+                        <select name="service" required>
+                            <option value="" disabled selected>Select a service</option>
+                            <option value="outpatient">Out-patient</option>
+                            <option value="inpatient">In-patient</option>
+                            <option value="maternity">Maternity &amp; MCH</option>
+                            <option value="laboratory">Laboratory</option>
+                            <option value="xray">X-ray</option>
+                            <option value="ultrasound">Ultra-sound</option>
+                            <option value="ccc">CCC (HIV/AIDS Care)</option>
+                            <option value="pmtct">PMTCT</option>
+                            <option value="hts">PITC / HTS</option>
+                            <option value="referral">Referral</option>
+                            <option value="morgue">Morgue Services</option>
+                        </select>
+                    </label>
+                    <label class="field">
+                        <span class="field-label">Preferred date</span>
+                        <input type="date" name="preferred_date" required>
+                    </label>
+                </div>
+
+                <label class="field">
+                    <span class="field-label">Notes <em>(optional)</em></span>
+                    <textarea name="message" rows="3" placeholder="Any symptoms or special requirements..."></textarea>
+                </label>
+
+                <button type="submit" class="btn btn-primary btn-full">Request Appointment</button>
+                <p class="contact-form-footnote">Or call us anytime on <a href="tel:0739983657">0739 983 657</a></p>
+            </form>
+        </div>
+    </div>
+</section>
+
+{% include 'includes/gallery_lightbox.html' %}
+{% include 'includes/site_footer.html' %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/gallery.js' %}"></script>
+{% endblock %}

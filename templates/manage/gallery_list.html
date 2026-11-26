@@ -1,0 +1,50 @@
+{% extends 'manage/base_manage.html' %}
+
+{% block title %}Gallery uploads — Manage{% endblock %}
+
+{% block manage_content %}
+<header class="manage-header">
+    <div>
+        <h1 class="manage-title">Gallery uploads</h1>
+        <p class="manage-subtitle">Images shown on the public gallery and homepage preview.</p>
+    </div>
+    <a href="{% url 'manage_gallery_upload' %}" class="btn btn-primary">Upload image</a>
+</header>
+
+{% if images %}
+<div class="manage-table-wrap">
+    <table class="manage-table">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for image in images %}
+            <tr>
+                <td>
+                    <img class="manage-thumb" src="{{ image.image.url }}" alt="" width="64" height="48">
+                </td>
+                <td>
+                    <strong>{{ image.title }}</strong>
+                    {% if image.is_featured %}<span class="manage-pill">Featured</span>{% endif %}
+                </td>
+                <td>{{ image.get_category_display }}</td>
+                <td>{% if image.is_active %}Active{% else %}Hidden{% endif %}</td>
+                <td class="manage-table-actions">
+                    <a href="{% url 'manage_gallery_edit' image.pk %}">Edit</a>
+                    <a href="{% url 'manage_gallery_delete' image.pk %}" class="is-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="manage-empty">No gallery images yet. <a href="{% url 'manage_gallery_upload' %}">Upload the first one</a>.</p>
+{% endif %}
+{% endblock %}

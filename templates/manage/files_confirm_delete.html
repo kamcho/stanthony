@@ -1,0 +1,21 @@
+{% extends 'manage/base_manage.html' %}
+
+{% block title %}Delete file — Manage{% endblock %}
+
+{% block manage_content %}
+<header class="manage-header">
+    <div>
+        <h1 class="manage-title">Delete file</h1>
+        <p class="manage-subtitle">This permanently removes the file from storage.</p>
+    </div>
+</header>
+
+<div class="manage-confirm">
+    <p>Delete <strong>{{ managed.title }}</strong>{% if managed.filename %} ({{ managed.filename }}){% endif %}?</p>
+    <form method="post" class="manage-confirm-actions">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Delete permanently</button>
+        <a href="{% url 'manage_files_list' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}

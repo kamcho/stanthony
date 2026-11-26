@@ -1,0 +1,27 @@
+{% load static %}
+<section class="hero hero--v1">
+    <div class="hero-media" aria-hidden="true">
+        <img
+            src="{% static 'img/hero-v1.jpg' %}"
+            alt=""
+            class="hero-media-img"
+            width="1920"
+            height="1080"
+            fetchpriority="high"
+        >
+        <div class="hero-media-shade"></div>
+    </div>
+
+    <div class="hero-content">
+        <p class="hero-brand">St. Anthony's Health Centre Abossi</p>
+        <h1 class="hero-title">Quality, safe and affordable care for every family</h1>
+        <p class="hero-subtitle">
+            Faith-based care in Trans Mara East, Narok County—out-patient, maternity, laboratory,
+            X-ray, ultra-sound, CCC and more. Open 24/7 since 1983.
+        </p>
+        <div class="hero-actions">
+            <a href="#book" class="btn btn-primary">Book an Appointment</a>
+            <a href="{% url 'about' %}" class="btn btn-hero-secondary">Our Story</a>
+        </div>
+    </div>
+</section>

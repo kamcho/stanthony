@@ -1,0 +1,48 @@
+{% extends 'manage/base_manage.html' %}
+
+{% block title %}File uploads — Manage{% endblock %}
+
+{% block manage_content %}
+<header class="manage-header">
+    <div>
+        <h1 class="manage-title">File uploads</h1>
+        <p class="manage-subtitle">Documents and other files stored for staff use.</p>
+    </div>
+    <a href="{% url 'manage_files_upload' %}" class="btn btn-primary">Upload file</a>
+</header>
+
+{% if files %}
+<div class="manage-table-wrap">
+    <table class="manage-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Type</th>
+                <th>File</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in files %}
+            <tr>
+                <td>
+                    <strong>{{ item.title }}</strong>
+                    {% if item.uploaded_by %}<span class="manage-meta">by {{ item.uploaded_by.username }}</span>{% endif %}
+                </td>
+                <td>{{ item.get_kind_display }}</td>
+                <td><a href="{{ item.file.url }}" target="_blank" rel="noopener">{{ item.filename }}</a></td>
+                <td>{% if item.is_active %}Active{% else %}Hidden{% endif %}</td>
+                <td class="manage-table-actions">
+                    <a href="{% url 'manage_files_edit' item.pk %}">Edit</a>
+                    <a href="{% url 'manage_files_delete' item.pk %}" class="is-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="manage-empty">No files yet. <a href="{% url 'manage_files_upload' %}">Upload the first one</a>.</p>
+{% endif %}
+{% endblock %}

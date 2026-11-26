@@ -1,0 +1,35 @@
+{% extends 'manage/base_manage.html' %}
+
+{% block title %}{{ page_title }} — Manage{% endblock %}
+
+{% block manage_content %}
+<header class="manage-header">
+    <div>
+        <h1 class="manage-title">{{ page_title }}</h1>
+        <p class="manage-subtitle">Fill in the role details. Responsibilities and requirements should be one item per line.</p>
+    </div>
+    <a href="{% url 'manage_careers_list' %}" class="btn btn-secondary">Back to list</a>
+</header>
+
+<form method="post" class="manage-form manage-form--card manage-form--wide" novalidate>
+    {% csrf_token %}
+
+    {% for field in form %}
+    <div class="field{% if field.field.widget.input_type == 'checkbox' %} field--check{% endif %}">
+        {% if field.field.widget.input_type == 'checkbox' %}
+            <label class="field-check-label">
+                {{ field }}
+                <span>{{ field.label }}</span>
+            </label>
+        {% else %}
+            <label class="field-label" for="{{ field.id_for_label }}">{{ field.label }}</label>
+            {{ field }}
+        {% endif %}
+        {% if field.help_text %}<span class="field-help">{{ field.help_text }}</span>{% endif %}
+        {% if field.errors %}<span class="field-error">{{ field.errors|striptags }}</span>{% endif %}
+    </div>
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">{{ submit_label }}</button>
+</form>
+{% endblock %}

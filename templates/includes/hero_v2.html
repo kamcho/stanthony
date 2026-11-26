@@ -1,0 +1,28 @@
+{% load static %}
+<section class="hero hero--v2">
+    <div class="hero-v2-panel">
+        <div class="hero-v2-panel-inner">
+            <p class="hero-v2-eyebrow">Since 1983 · Trans Mara East</p>
+            <p class="hero-brand hero-v2-brand">St. Anthony's Health Centre Abossi</p>
+            <h1 class="hero-title hero-v2-title">Care rooted in faith, accessible by all</h1>
+            <p class="hero-subtitle hero-v2-subtitle">
+                Out-patient, in-patient, maternity, laboratory, X-ray, ultra-sound, PMTCT, CCC and
+                referral services—open every hour of every day.
+            </p>
+            <div class="hero-actions">
+                <a href="#book" class="btn btn-primary">Book an Appointment</a>
+                <a href="{% url 'about' %}" class="btn btn-secondary">Our Story</a>
+            </div>
+        </div>
+    </div>
+    <div class="hero-v2-photo" aria-hidden="true">
+        <img
+            src="{% static 'img/hero-v2.jpg' %}"
+            alt=""
+            class="hero-v2-img"
+            width="1200"
+            height="1400"
+            fetchpriority="high"
+        >
+    </div>
+</section>

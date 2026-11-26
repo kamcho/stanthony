@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+
+{% block title %}Careers — St. Anthony's Health Centre Abossi{% endblock %}
+
+{% block content %}
+{% include 'includes/site_header.html' %}
+
+<section class="page-hero">
+    <div class="container page-hero-inner">
+        <span class="section-badge">Careers</span>
+        <h1 class="page-hero-title">Join Our Team of 29</h1>
+        <p class="page-hero-text">
+            Serve with the Little Sisters of St. Joseph at St. Anthony's Health Centre Abossi.
+            Help us provide quality, safe and affordable healthcare accessible by all
+            in Trans Mara East, Narok County.
+        </p>
+    </div>
+</section>
+
+<section class="section careers-benefits">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-badge">Why Join Us</span>
+            <h2 class="section-title">Work With Purpose</h2>
+            <p class="section-subtitle">
+                Work in a faith-based facility guided by spirituality, unity, quality, integrity,
+                respect, equity, responsibility and professionalism.
+            </p>
+        </header>
+        <div class="careers-benefits-grid">
+            <article class="careers-benefit">
+                <span class="careers-benefit-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                </span>
+                <h3>Serve Abossi</h3>
+                <p>Improve health and living standards for families across Trans Mara East.</p>
+            </article>
+            <article class="careers-benefit">
+                <span class="careers-benefit-icon careers-benefit-icon--blue" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14M8 7h8M8 11h8M8 15h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                <h3>Faith-Based Mission</h3>
+                <p>Join evangelization, pastoral care and healthcare under the Diocese of Ngong.</p>
+            </article>
+            <article class="careers-benefit">
+                <span class="careers-benefit-icon careers-benefit-icon--green" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                <h3>Partner Network</h3>
+                <p>Collaborate with MOH, Narok County, Trans Mara East and Lifenet International.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section careers-listing" id="open-positions">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-badge">Open Positions</span>
+            <h2 class="section-title">Current Opportunities</h2>
+            <p class="section-subtitle">
+                {% if open_positions %}
+                    {{ open_positions|length }} position{{ open_positions|length|pluralize }} available. Click a role to view details and apply.
+                {% else %}
+                    No open positions at the moment. Check back soon or send your CV for future opportunities.
+                {% endif %}
+            </p>
+        </header>
+
+        {% if open_positions %}
+        <div class="careers-jobs">
+            {% for job in open_positions %}
+            <article class="career-card">
+                <div class="career-card-main">
+                    <div class="career-card-tags">
+                        <span class="career-tag">{{ job.get_department_display }}</span>
+                        <span class="career-tag career-tag--muted">{{ job.get_employment_type_display }}</span>
+                    </div>
+                    <h3 class="career-card-title">
+                        <a href="{{ job.get_absolute_url }}">{{ job.title }}</a>
+                    </h3>
+                    <p class="career-card-summary">{{ job.summary }}</p>
+                    <div class="career-card-meta">
+                        <span>{{ job.location }}</span>
+                        <span>Posted {{ job.posted_at|date:"M j, Y" }}</span>
+                        {% if job.closing_date %}
+                        <span>Closes {{ job.closing_date|date:"M j, Y" }}</span>
+                        {% endif %}
+                    </div>
+                </div>
+                <a href="{{ job.get_absolute_url }}" class="btn btn-secondary career-card-link">View Details</a>
+            </article>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="careers-empty">
+            <p>We welcome speculative applications from qualified healthcare professionals.</p>
+            <a href="mailto:St.anthonysabossi.hc@gmail.com" class="btn btn-primary">Email Your CV</a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{% include 'includes/site_footer.html' %}
+{% endblock %}

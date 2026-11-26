@@ -1,0 +1,282 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us — St. Anthony's Health Centre Abossi{% endblock %}
+
+{% block content %}
+{% include 'includes/site_header.html' %}
+
+<section class="about-hero">
+    <div class="about-hero-bg" aria-hidden="true"></div>
+    <div class="container about-hero-grid">
+        <div class="about-hero-content">
+            <span class="section-badge">About St. Anthony's</span>
+            <h1 class="about-hero-title">
+                Faith-Based Care Serving
+                <span class="about-hero-accent">Abossi Since 1983</span>
+            </h1>
+            <p class="about-hero-lead">
+                St. Anthony's Health Centre Abossi is a faith-based organisation under the Catholic
+                Diocese of Ngong, managed by the Little Sisters of St. Joseph—offering out-patient,
+                in-patient, maternity, laboratory, X-ray, ultra-sound, MCH, PMTCT, PITC/HTS, CCC
+                and referral services accessible by all.
+            </p>
+            <div class="about-hero-actions">
+                <a href="{% url 'index' %}#book" class="btn btn-primary">Book a Visit</a>
+                <a href="{% url 'gallery' %}" class="btn btn-secondary">View Gallery</a>
+            </div>
+        </div>
+        <div class="about-hero-visual">
+            <div class="about-hero-card about-hero-card--main">
+                <span class="about-hero-stat-num">1983</span>
+                <span class="about-hero-stat-text">Year established in Abossi Village</span>
+            </div>
+            <div class="about-hero-card about-hero-card--side">
+                <span class="about-hero-stat-num">29</span>
+                <span class="about-hero-stat-text">Medical &amp; support staff</span>
+            </div>
+            <div class="about-hero-card about-hero-card--accent">
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s-7-4.5-7-10a4 4 0 0 1 7-2 4 4 0 0 1 7 2c0 5.5-7 10-7 10Z" stroke="currentColor" stroke-width="1.5"/></svg>
+                <span>Trans Mara East, Narok County</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-story">
+    <div class="container about-story-grid">
+        <div class="about-story-content">
+            <h2>Hospital History &amp; Background</h2>
+            <p>
+                St. Anthony's Health Centre Abossi was established in 1983 at Abossi Village,
+                Trans Mara East, Narok County, to improve the health and living standards of the
+                community of Abossi through provision of quality, safe and affordable health care
+                services accessible by all.
+            </p>
+            <p>
+                The facility operates under the stewardship of His Lordship Rt. Rev. Bishop John
+                Oballa Owaa of the Catholic Diocese of Ngong and is managed by the Little Sisters
+                of St. Joseph, with direction from the father in charge, Holy Trinity Catholic
+                Church, Abossi.
+            </p>
+            <blockquote class="about-pullquote">
+                "Transforming lives through evangelization, pastoral care and health-care service
+                provision that is affordable, reliable and accessible by all."
+                <cite>— Our Mission</cite>
+            </blockquote>
+        </div>
+        <div class="about-timeline">
+            <h3 class="about-timeline-heading">Our Journey</h3>
+            <ol class="about-timeline-list">
+                <li>
+                    <span class="about-timeline-year">1983</span>
+                    <div>
+                        <strong>Centre Established</strong>
+                        <p>Founded in Abossi Village to bring quality healthcare closer to the community.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="about-timeline-year">Growth</span>
+                    <div>
+                        <strong>Expanded Clinical Services</strong>
+                        <p>Out-patient, in-patient, maternity, laboratory, radiology and referral care.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="about-timeline-year">HIV Care</span>
+                    <div>
+                        <strong>CCC &amp; PMTCT</strong>
+                        <p>Comprehensive care clinic for persons living with HIV/AIDS and prevention of mother-to-child transmission.</p>
+                    </div>
+                </li>
+                <li>
+                    <span class="about-timeline-year">Today</span>
+                    <div>
+                        <strong>29 Staff, 24/7 Care</strong>
+                        <p>Serving Trans Mara East with partners including MOH, Narok County and Lifenet International.</p>
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+<section class="about-stats-band" aria-label="Key statistics">
+    <div class="container about-stats-band-grid">
+        <div><span>1983</span><small>Year Founded</small></div>
+        <div><span>29</span><small>Medical &amp; Support Staff</small></div>
+        <div><span>24/7</span><small>Always Open</small></div>
+        <div><span>KMPDC</span><small>Reg. No. 001821</small></div>
+    </div>
+</section>
+
+<section class="section about-pillars">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-badge">What We Stand For</span>
+            <h2 class="section-title">Mission, Vision &amp; Core Values</h2>
+        </header>
+        <div class="about-pillars-grid">
+            <article class="about-pillar">
+                <div class="about-pillar-num">01</div>
+                <h3>Mission</h3>
+                <p>Transforming lives through evangelization, pastoral care and health-care service provision that is affordable, reliable and accessible by all.</p>
+            </article>
+            <article class="about-pillar">
+                <div class="about-pillar-num">02</div>
+                <h3>Vision</h3>
+                <p>Provision of quality, safe, and affordable health care services accessible by all.</p>
+            </article>
+            <article class="about-pillar">
+                <div class="about-pillar-num">03</div>
+                <h3>Core Values</h3>
+                <p>Spirituality, unity, quality, integrity, respect, equity, responsibility and professionalism.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section about-facilities">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-badge">Our Services</span>
+            <h2 class="section-title">Comprehensive Community Care</h2>
+            <p class="section-subtitle">Out-patient, in-patient, maternity, laboratory, X-ray, ultra-sound, MCH, PMTCT, PITC/HTS, CCC and referral—under one roof.</p>
+        </header>
+        <div class="about-bento">
+            <div class="about-bento-item about-bento-item--large">
+                <span class="about-bento-icon" aria-hidden="true">+</span>
+                <h3>Out-patient &amp; In-patient</h3>
+                <p>Day consultations and admission care for patients who need continuous medical attention.</p>
+            </div>
+            <div class="about-bento-item">
+                <span class="about-bento-icon" aria-hidden="true">♥</span>
+                <h3>Maternity &amp; MCH</h3>
+                <p>Maternity and maternal and child health services for mothers and children.</p>
+            </div>
+            <div class="about-bento-item">
+                <span class="about-bento-icon" aria-hidden="true">LB</span>
+                <h3>Laboratory</h3>
+                <p>Basic investigations plus biochemistry—kidney, liver, cholesterol, sodium and potassium.</p>
+            </div>
+            <div class="about-bento-item">
+                <span class="about-bento-icon" aria-hidden="true">XR</span>
+                <h3>X-ray &amp; Ultra-sound</h3>
+                <p>Diagnostic imaging including X-ray and ultra-sound for clinical and maternal care.</p>
+            </div>
+            <div class="about-bento-item about-bento-item--wide">
+                <span class="about-bento-icon" aria-hidden="true">HIV</span>
+                <h3>CCC, PMTCT &amp; PITC/HTS</h3>
+                <p>Comprehensive Care Clinic for persons living with HIV/AIDS, prevention of mother-to-child transmission, and PITC/HTS.</p>
+            </div>
+            <div class="about-bento-item">
+                <span class="about-bento-icon" aria-hidden="true">RF</span>
+                <h3>Referral Services</h3>
+                <p>Coordinated referrals when specialised care is required beyond our facility.</p>
+            </div>
+            <div class="about-bento-item">
+                <span class="about-bento-icon" aria-hidden="true">MS</span>
+                <h3>Morgue Services</h3>
+                <p>Dignified mortuary care, storage and support for bereaved families.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section about-leadership">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-badge">Stewardship</span>
+            <h2 class="section-title">How We Are Governed</h2>
+            <p class="section-subtitle">
+                Guided by the Catholic Diocese of Ngong and managed day-to-day by the Little Sisters of St. Joseph.
+            </p>
+        </header>
+        <div class="about-leaders">
+            <article class="about-leader">
+                <div class="about-leader-top">
+                    <span class="about-leader-avatar">JO</span>
+                    <div>
+                        <h3>Rt. Rev. Bishop John Oballa Owaa</h3>
+                        <p class="about-leader-role">Catholic Diocese of Ngong</p>
+                    </div>
+                </div>
+                <p class="about-leader-bio">The facility operates under the stewardship of His Lordship, ensuring faith-based leadership and pastoral oversight.</p>
+            </article>
+            <article class="about-leader">
+                <div class="about-leader-top">
+                    <span class="about-leader-avatar about-leader-avatar--blue">LS</span>
+                    <div>
+                        <h3>Little Sisters of St. Joseph</h3>
+                        <p class="about-leader-role">Facility Management</p>
+                    </div>
+                </div>
+                <p class="about-leader-bio">Day-to-day management of the health centre with a commitment to quality, dignity and community service.</p>
+            </article>
+            <article class="about-leader">
+                <div class="about-leader-top">
+                    <span class="about-leader-avatar about-leader-avatar--green">HT</span>
+                    <div>
+                        <h3>Holy Trinity Catholic Church</h3>
+                        <p class="about-leader-role">Father in Charge · Abossi</p>
+                    </div>
+                </div>
+                <p class="about-leader-bio">Provides pastoral direction alongside clinical care for the people of Abossi and surrounding communities.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section class="section about-partners">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-badge">Partners</span>
+            <h2 class="section-title">Our Collaborating Partners</h2>
+        </header>
+        <ul class="about-partners-list">
+            <li>Ministry of Health</li>
+            <li>Narok County Government — Department of Health</li>
+            <li>Trans Mara East Sub-county</li>
+            <li>Lifenet International</li>
+            <li>The Community</li>
+        </ul>
+    </div>
+</section>
+
+{% if gallery_preview %}
+<section class="section about-gallery-preview">
+    <div class="container">
+        <header class="section-header">
+            <span class="section-badge">Gallery</span>
+            <h2 class="section-title">See Our Centre in Action</h2>
+        </header>
+        <div class="gallery-grid gallery-grid--compact">
+            {% include 'includes/gallery_items.html' with items=gallery_preview %}
+        </div>
+        <div class="gallery-preview-cta">
+            <a href="{% url 'gallery' %}" class="btn btn-secondary">View Full Gallery</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<section class="about-cta-band">
+    <div class="container about-cta-band-inner">
+        <div>
+            <h2>Need Care Today?</h2>
+            <p>We are open 24/7. Call 0739 983 657 or book an appointment online.</p>
+        </div>
+        <div class="about-cta-band-actions">
+            <a href="{% url 'index' %}#book" class="btn btn-primary">Book Appointment</a>
+            <a href="tel:0739983657" class="btn btn-secondary">Call Us</a>
+        </div>
+    </div>
+</section>
+
+{% include 'includes/gallery_lightbox.html' %}
+{% include 'includes/site_footer.html' %}
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/gallery.js' %}"></script>
+{% endblock %}

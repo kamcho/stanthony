@@ -1,0 +1,51 @@
+{% extends 'manage/base_manage.html' %}
+
+{% block title %}Careers — Manage{% endblock %}
+
+{% block manage_content %}
+<header class="manage-header">
+    <div>
+        <h1 class="manage-title">Careers</h1>
+        <p class="manage-subtitle">Create and update job postings shown on the public careers page.</p>
+    </div>
+    <a href="{% url 'manage_careers_create' %}" class="btn btn-primary">Add posting</a>
+</header>
+
+{% if careers_list %}
+<div class="manage-table-wrap">
+    <table class="manage-table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Department</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Closing</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for career in careers_list %}
+            <tr>
+                <td>
+                    <strong>{{ career.title }}</strong>
+                    <span class="manage-meta">{{ career.location }}</span>
+                </td>
+                <td>{{ career.get_department_display }}</td>
+                <td>{{ career.get_employment_type_display }}</td>
+                <td>{% if career.is_active %}Open{% else %}Closed{% endif %}</td>
+                <td>{% if career.closing_date %}{{ career.closing_date|date:"d M Y" }}{% else %}—{% endif %}</td>
+                <td class="manage-table-actions">
+                    <a href="{% url 'career_detail' career.slug %}" target="_blank" rel="noopener">View</a>
+                    <a href="{% url 'manage_careers_edit' career.pk %}">Edit</a>
+                    <a href="{% url 'manage_careers_delete' career.pk %}" class="is-danger">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="manage-empty">No career postings yet. <a href="{% url 'manage_careers_create' %}">Add the first one</a>.</p>
+{% endif %}
+{% endblock %}
