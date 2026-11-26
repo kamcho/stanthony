@@ -14,11 +14,18 @@ if not password:
     sys.exit('EMAIL_PASS or EMAIL_PASS_B64 is required')
 print('Password length:', len(password))
 
+# Prefer 465/SSL for Namecheap Private Email (more reliable from some VPS hosts).
+mode = os.environ.get('EMAIL_MODE', 'ssl').strip().lower()
+if mode == 'tls':
+    port, use_tls, use_ssl = '587', 'True', 'False'
+else:
+    port, use_tls, use_ssl = '465', 'False', 'True'
+
 updates = {
     'EMAIL_HOST': 'mail.privateemail.com',
-    'EMAIL_PORT': '587',
-    'EMAIL_USE_TLS': 'True',
-    'EMAIL_USE_SSL': 'False',
+    'EMAIL_PORT': port,
+    'EMAIL_USE_TLS': use_tls,
+    'EMAIL_USE_SSL': use_ssl,
     'EMAIL_HOST_USER': 'info@stanthonyhcabossi.org',
     'EMAIL_HOST_PASSWORD': password,
     'DEFAULT_FROM_EMAIL': 'St. Anthony Health Centre <info@stanthonyhcabossi.org>',
