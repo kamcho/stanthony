@@ -18,17 +18,20 @@ if [[ ! -f "$APP/manage.py" ]]; then
   exit 1
 fi
 
-echo "==> Checking DNS (must point at $IP, not Namecheap parking)"
+echo "==> Checking DNS via 8.8.8.8 (must point at $IP)"
 resolve() {
-  python3 - <<'PY' "$1"
+  local host="$1"
+  if command -v dig >/dev/null 2>&1; then
+    dig +short A "$host" @8.8.8.8 | head -n1
+  else
+    python3 - <<'PY' "$host"
 import socket, sys
-host = sys.argv[1]
 try:
-    print(socket.gethostbyname(host))
-except Exception as e:
+    print(socket.gethostbyname(sys.argv[1]))
+except Exception:
     print("UNRESOLVED")
-    sys.exit(0)
 PY
+  fi
 }
 
 APEX_IP="$(resolve "$DOMAIN" || true)"
@@ -43,7 +46,7 @@ if [[ "$APEX_IP" != "$IP" || "$WWW_IP" != "$IP" ]]; then
   echo "  2. Use Advanced DNS with A records:"
   echo "       Host @   → $IP"
   echo "       Host www → $IP"
-  echo "  3. Wait until: dig +short $DOMAIN   shows $IP"
+  echo "  3. Wait until: dig +short $DOMAIN @8.8.8.8   shows $IP"
   echo "Then re-run: sudo bash $APP/deploy/enable-domain.sh"
   exit 2
 fi
