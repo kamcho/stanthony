@@ -456,29 +456,23 @@
                     <input type="email" name="email" class="field-control" placeholder="you@example.com" autocomplete="email" value="{{ appointment_form.email.value|default:'' }}">
                 </label>
 
-                <div class="form-row">
-                    <label class="field">
-                        <span class="field-label">Service needed</span>
-                        <select name="service" class="field-control" required>
-                            <option value="" disabled {% if not appointment_form.service.value %}selected{% endif %}>Select a service</option>
-                            <option value="outpatient">Out-patient</option>
-                            <option value="inpatient">In-patient</option>
-                            <option value="maternity">Maternity &amp; MCH</option>
-                            <option value="laboratory">Laboratory</option>
-                            <option value="xray">X-ray</option>
-                            <option value="ultrasound">Ultra-sound</option>
-                            <option value="ccc">CCC (HIV/AIDS Care)</option>
-                            <option value="pmtct">PMTCT</option>
-                            <option value="hts">PITC / HTS</option>
-                            <option value="referral">Referral</option>
-                            <option value="morgue">Morgue Services</option>
-                        </select>
-                    </label>
-                    <label class="field">
-                        <span class="field-label">Preferred date</span>
-                        <input type="date" name="preferred_date" class="field-control" required>
-                    </label>
-                </div>
+                <label class="field">
+                    <span class="field-label">Service needed</span>
+                    <select name="service" class="field-control" required>
+                        <option value="" disabled {% if not appointment_form.service.value %}selected{% endif %}>Select a service</option>
+                        <option value="outpatient">Out-patient</option>
+                        <option value="inpatient">In-patient</option>
+                        <option value="maternity">Maternity &amp; MCH</option>
+                        <option value="laboratory">Laboratory</option>
+                        <option value="xray">X-ray</option>
+                        <option value="ultrasound">Ultra-sound</option>
+                        <option value="ccc">CCC (HIV/AIDS Care)</option>
+                        <option value="pmtct">PMTCT</option>
+                        <option value="hts">PITC / HTS</option>
+                        <option value="referral">Referral</option>
+                        <option value="morgue">Morgue Services</option>
+                    </select>
+                </label>
 
                 <label class="field">
                     <span class="field-label">Notes <em>(optional)</em></span>

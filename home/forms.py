@@ -24,7 +24,6 @@ class AppointmentRequestForm(forms.Form):
     phone = forms.CharField(max_length=40)
     email = forms.EmailField(required=False)
     service = forms.ChoiceField(choices=SERVICE_CHOICES)
-    preferred_date = forms.DateField(input_formats=['%Y-%m-%d'])
     message = forms.CharField(required=False, widget=forms.Textarea)
 
 

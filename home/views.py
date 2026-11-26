@@ -48,8 +48,7 @@ def book_appointment(request):
         f"Name:    {data['full_name']}\n"
         f"Phone:   {data['phone']}\n"
         f"Email:   {data['email'] or '—'}\n"
-        f"Service: {service_label}\n"
-        f"Date:    {data['preferred_date'].strftime('%d %b %Y')}\n\n"
+        f"Service: {service_label}\n\n"
         f"Notes:\n{data['message'] or '—'}\n"
     )
 
