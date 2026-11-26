@@ -154,6 +154,24 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'manage_dashboard'
 LOGOUT_REDIRECT_URL = 'index'
 
+# Email — Namecheap Private Email (mail.privateemail.com)
+EMAIL_BACKEND = os.getenv(
+    'EMAIL_BACKEND',
+    'django.core.mail.backends.smtp.EmailBackend',
+)
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'mail.privateemail.com')
+EMAIL_PORT = int(os.getenv('EMAIL_PORT', '587'))
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'info@stanthonyhcabossi.org')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '')
+EMAIL_USE_TLS = env_bool('EMAIL_USE_TLS', True)
+EMAIL_USE_SSL = env_bool('EMAIL_USE_SSL', False)
+DEFAULT_FROM_EMAIL = os.getenv(
+    'DEFAULT_FROM_EMAIL',
+    'St. Anthony Health Centre <info@stanthonyhcabossi.org>',
+)
+SERVER_EMAIL = DEFAULT_FROM_EMAIL
+CONTACT_NOTIFY_EMAIL = os.getenv('CONTACT_NOTIFY_EMAIL', 'info@stanthonyhcabossi.org')
+
 DATA_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024
 FILE_UPLOAD_MAX_MEMORY_SIZE = 10 * 1024 * 1024
 

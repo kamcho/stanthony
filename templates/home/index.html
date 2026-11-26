@@ -428,30 +428,39 @@
                 </ul>
             </div>
 
-            <form class="contact-form" action="#" method="post">
+            <form class="contact-form" action="{% url 'book_appointment' %}" method="post" novalidate>
+                {% csrf_token %}
                 <p class="contact-form-intro">Tell us how we can help—we'll confirm your visit by phone.</p>
+
+                {% if messages %}
+                <div class="manage-messages" style="margin-bottom:1rem">
+                    {% for message in messages %}
+                    <div class="form-alert form-alert--{{ message.tags|default:'success' }}" role="status">{{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
 
                 <div class="form-row">
                     <label class="field">
                         <span class="field-label">Full name</span>
-                        <input type="text" name="full_name" placeholder="Your full name" autocomplete="name" required>
+                        <input type="text" name="full_name" class="field-control" placeholder="Your full name" autocomplete="name" required value="{{ appointment_form.full_name.value|default:'' }}">
                     </label>
                     <label class="field">
                         <span class="field-label">Phone</span>
-                        <input type="tel" name="phone" placeholder="07XX XXX XXX" autocomplete="tel" required>
+                        <input type="tel" name="phone" class="field-control" placeholder="07XX XXX XXX" autocomplete="tel" required value="{{ appointment_form.phone.value|default:'' }}">
                     </label>
                 </div>
 
                 <label class="field">
                     <span class="field-label">Email <em>(optional)</em></span>
-                    <input type="email" name="email" placeholder="you@example.com" autocomplete="email">
+                    <input type="email" name="email" class="field-control" placeholder="you@example.com" autocomplete="email" value="{{ appointment_form.email.value|default:'' }}">
                 </label>
 
                 <div class="form-row">
                     <label class="field">
                         <span class="field-label">Service needed</span>
-                        <select name="service" required>
-                            <option value="" disabled selected>Select a service</option>
+                        <select name="service" class="field-control" required>
+                            <option value="" disabled {% if not appointment_form.service.value %}selected{% endif %}>Select a service</option>
                             <option value="outpatient">Out-patient</option>
                             <option value="inpatient">In-patient</option>
                             <option value="maternity">Maternity &amp; MCH</option>
@@ -467,13 +476,13 @@
                     </label>
                     <label class="field">
                         <span class="field-label">Preferred date</span>
-                        <input type="date" name="preferred_date" required>
+                        <input type="date" name="preferred_date" class="field-control" required>
                     </label>
                 </div>
 
                 <label class="field">
                     <span class="field-label">Notes <em>(optional)</em></span>
-                    <textarea name="message" rows="3" placeholder="Any symptoms or special requirements..."></textarea>
+                    <textarea name="message" class="field-control" rows="3" placeholder="Any symptoms or special requirements..."></textarea>
                 </label>
 
                 <button type="submit" class="btn btn-primary btn-full">Request Appointment</button>

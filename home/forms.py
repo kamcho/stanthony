@@ -4,6 +4,30 @@ from django.contrib.auth.forms import AuthenticationForm
 from .models import Career, GalleryImage, ManagedFile
 
 
+SERVICE_CHOICES = [
+    ('outpatient', 'Out-patient'),
+    ('inpatient', 'In-patient'),
+    ('maternity', 'Maternity & MCH'),
+    ('laboratory', 'Laboratory'),
+    ('xray', 'X-ray'),
+    ('ultrasound', 'Ultra-sound'),
+    ('ccc', 'CCC (HIV/AIDS Care)'),
+    ('pmtct', 'PMTCT'),
+    ('hts', 'PITC / HTS'),
+    ('referral', 'Referral'),
+    ('morgue', 'Morgue Services'),
+]
+
+
+class AppointmentRequestForm(forms.Form):
+    full_name = forms.CharField(max_length=120)
+    phone = forms.CharField(max_length=40)
+    email = forms.EmailField(required=False)
+    service = forms.ChoiceField(choices=SERVICE_CHOICES)
+    preferred_date = forms.DateField(input_formats=['%Y-%m-%d'])
+    message = forms.CharField(required=False, widget=forms.Textarea)
+
+
 class LoginForm(AuthenticationForm):
     username = forms.CharField(
         widget=forms.TextInput(attrs={

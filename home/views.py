@@ -1,19 +1,81 @@
+import logging
+
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
+from django.core.mail import EmailMessage
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.utils.http import url_has_allowed_host_and_scheme
 from django.views.decorators.http import require_POST
 
-from .forms import CareerForm, GalleryImageForm, LoginForm, ManagedFileForm
+from .forms import (
+    AppointmentRequestForm,
+    CareerForm,
+    GalleryImageForm,
+    LoginForm,
+    ManagedFileForm,
+    SERVICE_CHOICES,
+)
 from .models import Career, GalleryImage, ManagedFile
+
+logger = logging.getLogger(__name__)
 
 
 def index(request):
     featured_gallery = GalleryImage.objects.filter(is_active=True, is_featured=True)[:6]
     return render(request, 'home/index.html', {
         'featured_gallery': featured_gallery,
+        'appointment_form': AppointmentRequestForm(),
     })
+
+
+@require_POST
+def book_appointment(request):
+    form = AppointmentRequestForm(request.POST)
+    if not form.is_valid():
+        messages.error(request, 'Please check the form and try again.')
+        return redirect(f"{reverse('index')}#book")
+
+    data = form.cleaned_data
+    service_label = dict(SERVICE_CHOICES).get(data['service'], data['service'])
+    notify_to = getattr(settings, 'CONTACT_NOTIFY_EMAIL', 'info@stanthonyhcabossi.org')
+    subject = f"Appointment request — {data['full_name']} ({service_label})"
+    body = (
+        f"New appointment request from the website\n"
+        f"{'=' * 40}\n\n"
+        f"Name:    {data['full_name']}\n"
+        f"Phone:   {data['phone']}\n"
+        f"Email:   {data['email'] or '—'}\n"
+        f"Service: {service_label}\n"
+        f"Date:    {data['preferred_date'].strftime('%d %b %Y')}\n\n"
+        f"Notes:\n{data['message'] or '—'}\n"
+    )
+
+    email = EmailMessage(
+        subject=subject,
+        body=body,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[notify_to],
+        reply_to=[data['email']] if data['email'] else None,
+    )
+
+    try:
+        email.send(fail_silently=False)
+    except Exception:
+        logger.exception('Failed to send appointment email')
+        messages.error(
+            request,
+            'We could not send your request right now. Please call 0739 983 657.',
+        )
+        return redirect(f"{reverse('index')}#book")
+
+    messages.success(
+        request,
+        'Thank you — your appointment request was sent. We will confirm by phone.',
+    )
+    return redirect(f"{reverse('index')}#book")
 
 
 def about(request):
