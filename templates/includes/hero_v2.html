@@ -16,13 +16,17 @@
         </div>
     </div>
     <div class="hero-v2-photo" aria-hidden="true">
-        <img
-            src="{% static 'img/hero-v2.jpg' %}"
-            alt=""
-            class="hero-v2-img"
-            width="1200"
-            height="1400"
-            fetchpriority="high"
-        >
+        <picture>
+            <source srcset="{% static 'img/hero-v2.webp' %}" type="image/webp">
+            <img
+                src="{% static 'img/hero-v2.jpg' %}"
+                alt=""
+                class="hero-v2-img"
+                width="1066"
+                height="1600"
+                loading="lazy"
+                decoding="async"
+            >
+        </picture>
     </div>
 </section>

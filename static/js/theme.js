@@ -8,7 +8,7 @@
         if (stored === 'light' || stored === 'dark') {
             return stored;
         }
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        return 'light';
     }
 
     function applyTheme(theme) {
@@ -24,10 +24,4 @@
             applyTheme(current === 'dark' ? 'light' : 'dark');
         });
     }
-
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
-        if (!localStorage.getItem(STORAGE_KEY)) {
-            applyTheme(e.matches ? 'dark' : 'light');
-        }
-    });
 })();

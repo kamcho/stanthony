@@ -9,7 +9,19 @@
     data-image="{{ item.image.url }}"
     aria-label="View {{ item.title }}"
 >
-    <img src="{{ item.image.url }}" alt="{{ item.title }}" loading="lazy">
+    <picture>
+        {% if item.image.url|slice:"-4:" == ".jpg" or item.image.url|slice:"-5:" == ".jpeg" %}
+        <source srcset="{{ item.image.url|slice:':-4' }}.webp" type="image/webp">
+        {% endif %}
+        <img
+            src="{{ item.image.url }}"
+            alt="{{ item.title }}"
+            loading="lazy"
+            decoding="async"
+            width="600"
+            height="400"
+        >
+    </picture>
     <span class="gallery-item-overlay">
         <span class="gallery-item-category">{{ item.get_category_display }}</span>
         <span class="gallery-item-title">{{ item.title }}</span>

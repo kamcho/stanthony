@@ -28,6 +28,9 @@ fi
 echo "==> Installing dependencies"
 "$PIP" install -r requirements.txt --quiet
 
+echo "==> Building concatenated CSS/JS"
+"$PYTHON" scripts/build_assets.py
+
 run_manage() {
   if id "$APP_USER" >/dev/null 2>&1 && [ "$(id -u)" -eq 0 ]; then
     sudo -u "$APP_USER" "$PYTHON" manage.py "$@"
