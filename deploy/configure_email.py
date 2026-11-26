@@ -6,8 +6,13 @@ from pathlib import Path
 
 ENV_PATH = Path(os.environ.get('STANTHONY_ENV', '/srv/stanthony/.env'))
 password = os.environ.get('EMAIL_PASS', '').strip()
+password_b64 = os.environ.get('EMAIL_PASS_B64', '').strip()
+if password_b64:
+    import base64
+    password = base64.b64decode(password_b64).decode('utf-8')
 if not password:
-    sys.exit('EMAIL_PASS is required')
+    sys.exit('EMAIL_PASS or EMAIL_PASS_B64 is required')
+print('Password length:', len(password))
 
 updates = {
     'EMAIL_HOST': 'mail.privateemail.com',
