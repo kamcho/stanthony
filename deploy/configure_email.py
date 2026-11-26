@@ -28,8 +28,8 @@ updates = {
     'EMAIL_USE_SSL': use_ssl,
     'EMAIL_HOST_USER': 'info@stanthonyhcabossi.org',
     'EMAIL_HOST_PASSWORD': password,
-    # Quote display name — Django rejects unquoted periods in the phrase.
-    'DEFAULT_FROM_EMAIL': '"St. Anthony Health Centre" <info@stanthonyhcabossi.org>',
+    # Keep .env simple so python-dotenv parses it; display name is optional.
+    'DEFAULT_FROM_EMAIL': 'info@stanthonyhcabossi.org',
     'CONTACT_NOTIFY_EMAIL': 'info@stanthonyhcabossi.org',
 }
 
